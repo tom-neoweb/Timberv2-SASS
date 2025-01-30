@@ -26,7 +26,7 @@ define( 'DB_NAME', 'ecothemes' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'root' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -71,7 +71,7 @@ define( 'NONCE_SALT',       'ASXKua#b50N9<XzJ0@*y6r6e)-%E`9qOJfhl0=5Y+2 I]?iE9-)
  *
  * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
  */
-$table_prefix = 'eco_';
+$table_prefix = 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
