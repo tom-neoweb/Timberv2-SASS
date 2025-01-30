@@ -1,0 +1,7 @@
+// Le as * permet d'exposer toutes les variables et mixins comme avec @import
+// as * supprime le namespace pour que les variables puissent être utilisées comme avant.
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'components/buttons' as *;
+@use 'components/headers' as *;

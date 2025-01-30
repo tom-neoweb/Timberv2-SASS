@@ -1,0 +1,33 @@
+# Ignorer les dépendances Composer
+/vendor/
+
+# Ignorer les dépendances npm/yarn
+/node_modules/
+
+# Ignorer les dépendances npm/yarn dans le thème
+/wp-content/themes/starter-theme-2.x/node_modules/
+
+# Ignorer les fichiers de configuration environnementaux
+.env
+.env.local
+.env.*.local
+
+# Ignorer les fichiers de cache et de logs
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backups/
+/wp-content/debug.log
+
+# Ignorer les fichiers de sauvegarde et temporaires
+*.bak
+*.tmp
+*.swp
+
+# Ignorer les fichiers de développement
+.DS_Store
+.idea/
+.vscode/
+*.code-workspace
+
+# Ignorer les téléversements média
+/wp-content/uploads/
