@@ -14,7 +14,7 @@
                 </p>
                 <div class="article-body">{{ post.content }}</div>
             </section>
-            <section class="comment-box">
+            {# <section class="comment-box">
                 <div class="comments">
                     {% if post.comments %}
                         <h3>comments</h3>
@@ -31,7 +31,7 @@
                 {% else %}
                     {% include 'partials/comment-form.twig' %}
                 {% endif %}
-            </section>
+            </section> #}
         </article>
     </div>
 {% endblock %}

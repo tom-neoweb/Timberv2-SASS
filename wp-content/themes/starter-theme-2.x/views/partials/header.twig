@@ -1,0 +1,15 @@
+<div class="header">
+    {% if function('has_custom_logo') %}
+        <a href="{{ site.url }}" class="custom-logo-link" aria-label="{{ site.name }}">
+            {{ fn('the_custom_logo') }}
+        </a>
+    {% else %}
+        <a href="{{ site.url }}">{{ site.name }}</a>
+    {% endif %}
+
+    <nav id="nav-main" class="nav-main">
+        {% include 'partials/menu.twig' with {
+            items: main_menu.get_items
+        } %}
+    </nav>
+</div>

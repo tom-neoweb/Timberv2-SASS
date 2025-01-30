@@ -5,3 +5,7 @@
 @use 'mixins' as *;
 @use 'components/buttons' as *;
 @use 'components/headers' as *;
+
+body {
+    font-family: $font-family;
+}

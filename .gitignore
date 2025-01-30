@@ -11,6 +11,7 @@
 .env
 .env.local
 .env.*.local
+wp-config.php
 
 # Ignorer les fichiers de cache et de logs
 /wp-content/cache/
