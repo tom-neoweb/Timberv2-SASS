@@ -45,3 +45,52 @@ function theme_setup() {
     ]);
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\theme_setup');
+
+// ----------------------------------------------------------------------------------------------------- //
+//                                  CUSTOM POST TYPE GENERATOR
+// ----------------------------------------------------------------------------------------------------- //
+
+function register_custom_post_type($slug, $singular, $plural, $args = []) {
+    $labels = [
+        'name'               => $plural,
+        'singular_name'      => $singular,
+        'menu_name'          => $plural,
+        'name_admin_bar'     => $singular,
+        'add_new'            => 'Ajouter',
+        'add_new_item'       => "Ajouter un(e) $singular",
+        'new_item'           => "Nouveau/Nouvelle $singular",
+        'edit_item'          => "Modifier $singular",
+        'view_item'          => "Voir $singular",
+        'all_items'          => "Tous les $plural",
+        'search_items'       => "Rechercher $plural",
+        'parent_item_colon'  => "Parent $plural:",
+        'not_found'          => "Aucun(e) $singular trouvé(e)",
+        'not_found_in_trash' => "Aucun(e) $singular trouvé(e) dans la corbeille"
+    ];
+
+    $defaults = [
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => true,
+        'show_in_menu'       => true,
+        'show_ui'            => true,
+        'query_var'          => true,
+        'rewrite'            => ['slug' => $slug],
+        'capability_type'    => 'post',
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+        'show_in_rest'       => true, // Activer l'éditeur Gutenberg
+    ];
+
+    $args = array_merge($defaults, $args);
+
+    register_post_type($slug, $args);
+}
+
+// Ajouter le CPT avec le namespace
+// add_action('init', __NAMESPACE__ . '\\register_custom_post_type_callback');
+
+// function register_custom_post_type_callback() {
+//     register_custom_post_type('realisation', 'Réalisation', 'Réalisations');
+// }
