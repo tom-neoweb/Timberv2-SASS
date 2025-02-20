@@ -26,7 +26,6 @@ function theme_enqueue_styles() {
 // Ajouter le namespace à la fonction pour WordPress
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\theme_enqueue_styles');
 
-
 // Autoriser l'upload des fichiers SVG
 function allow_svg_upload($mimes) {
     $mimes['svg'] = 'image/svg+xml';
@@ -88,9 +87,11 @@ function register_custom_post_type($slug, $singular, $plural, $args = []) {
     register_post_type($slug, $args);
 }
 
-// Ajouter le CPT avec le namespace
-// add_action('init', __NAMESPACE__ . '\\register_custom_post_type_callback');
+function customtheme_enqueue_scripts() {
+    $theme_version = wp_get_theme()->get('Version');
 
-// function register_custom_post_type_callback() {
-//     register_custom_post_type('realisation', 'Réalisation', 'Réalisations');
-// }
+    // Bootstrap CSS
+    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), $theme_version);
+    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), $theme_version, true);
+}
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\customtheme_enqueue_scripts');
