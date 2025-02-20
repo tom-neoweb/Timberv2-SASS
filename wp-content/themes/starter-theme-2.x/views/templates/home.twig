@@ -1,0 +1,5 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+    {% include 'templates/annonces/annonces-list.twig' with { annonces: annonces } %}
+{% endblock %}

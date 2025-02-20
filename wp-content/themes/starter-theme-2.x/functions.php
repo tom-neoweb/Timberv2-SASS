@@ -26,6 +26,15 @@ function theme_enqueue_styles() {
 // Ajouter le namespace à la fonction pour WordPress
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\theme_enqueue_styles');
 
+function customtheme_enqueue_scripts() {
+    $theme_version = wp_get_theme()->get('Version');
+
+    // Bootstrap CSS
+    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), $theme_version);
+    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), $theme_version, true);
+}
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\customtheme_enqueue_scripts');
+
 // Autoriser l'upload des fichiers SVG
 function allow_svg_upload($mimes) {
     $mimes['svg'] = 'image/svg+xml';
@@ -87,11 +96,9 @@ function register_custom_post_type($slug, $singular, $plural, $args = []) {
     register_post_type($slug, $args);
 }
 
-function customtheme_enqueue_scripts() {
-    $theme_version = wp_get_theme()->get('Version');
+add_action('init', function() {
+    register_custom_post_type('cp_annonces', 'Annonce', 'Annonces', [
+        'menu_icon' => 'dashicons-megaphone',
+    ]);
+});
 
-    // Bootstrap CSS
-    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/node_modules/bootstrap/dist/css/bootstrap.min.css', array(), $theme_version);
-    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), $theme_version, true);
-}
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\customtheme_enqueue_scripts');

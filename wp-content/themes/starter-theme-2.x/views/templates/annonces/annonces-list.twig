@@ -1,0 +1,9 @@
+<div class="annonces-list">
+    <div class="container">
+        {% for annonce in annonces %}
+            <div class="annonce col-lg-4">
+                {% include 'templates/annonces/tease.twig' with { post: annonce } %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
