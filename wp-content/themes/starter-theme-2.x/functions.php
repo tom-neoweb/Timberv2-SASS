@@ -96,9 +96,43 @@ function register_custom_post_type($slug, $singular, $plural, $args = []) {
     register_post_type($slug, $args);
 }
 
+function register_custom_taxonomy($slug, $singular, $plural, $post_types, $args = []) {
+    $labels = [
+        'name'              => $plural,
+        'singular_name'     => $singular,
+        'search_items'      => "Rechercher $plural",
+        'all_items'         => "Toutes les $plural",
+        'parent_item'       => "$singular parent",
+        'parent_item_colon' => "$singular parent:",
+        'edit_item'         => "Modifier $singular",
+        'update_item'       => "Mettre à jour $singular",
+        'add_new_item'      => "Ajouter une nouvelle $singular",
+        'new_item_name'     => "Nom de la nouvelle $singular",
+        'menu_name'         => $plural,
+    ];
+
+    $defaults = [
+        'labels'            => $labels,
+        'public'            => true,
+        'hierarchical'      => true, // true = Catégories, false = Tags
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => ['slug' => $slug],
+        'show_in_rest'      => true, // Activation pour Gutenberg
+    ];
+
+    $args = array_merge($defaults, $args);
+
+    register_taxonomy($slug, $post_types, $args);
+}
+
+
 add_action('init', function() {
     register_custom_post_type('cp_annonces', 'Annonce', 'Annonces', [
         'menu_icon' => 'dashicons-megaphone',
     ]);
+
+    register_custom_taxonomy('annonce_type', 'Type', 'Types', ['cp_annonces']);
 });
 

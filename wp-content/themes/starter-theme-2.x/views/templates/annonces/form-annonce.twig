@@ -1,0 +1,33 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+    <form method="POST" action="{{ site.url }}/wp-admin/admin-post.php" enctype="multipart/form-data" class="container mt-4">
+        <input type="hidden" name="action" value="submit_annonce"> <!-- Vérifier que l'action est correcte -->
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Titre de l'annonce</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Description</label>
+            <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Type d'annonce</label>
+            <select class="form-select" id="category" name="category" required>
+                {% for category in categories %}
+                    <option value="{{ category.term_id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Soumettre l'annonce</button>
+    </form>
+{% endblock %}

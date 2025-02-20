@@ -1,9 +1,11 @@
 {% extends 'layouts/base.twig' %}
 
 {% block content %}
-    {% for post in posts %}
-        {% include ['tease.twig'] %}
-    {% endfor %}
+    <div class="archive-posts-annonces d-flex">
+        {% for post in posts %}
+            {% include ['tease.twig'] %}
+        {% endfor %}
+    </div>
 
     {% include 'partials/pagination.twig' with {
         pagination: posts.pagination({

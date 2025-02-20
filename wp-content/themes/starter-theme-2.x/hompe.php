@@ -19,6 +19,11 @@ $args = [
 
 $context['annonces'] = Timber::get_posts($args);
 
+$context['categories'] = Timber::get_terms([
+    'taxonomy'   => 'annonce_type',
+    'hide_empty' => false,
+]);
+
 $timber_post = Timber::get_posts();
 $context['post'] = $timber_post;
 
