@@ -136,3 +136,7 @@ add_action('init', function() {
     register_custom_taxonomy('annonce_type', 'Type', 'Types', ['cp_annonces']);
 });
 
+
+
+
+
