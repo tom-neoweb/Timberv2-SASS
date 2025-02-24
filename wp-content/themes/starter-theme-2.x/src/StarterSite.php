@@ -68,7 +68,7 @@ class StarterSite extends Site {
 		// Register navigation menus
 		register_nav_menus(
 			[
-				'main_navigation' => _x( 'Main menu', 'Backend - Main menu name', 'timber-starter' ),
+				'primary_navigation' => _x( 'Main menu', 'Backend - Main menu name', 'timber-starter' ),
 				'footer_navigation' => _x( 'Footer menu', 'Backend - Footer menu name', 'timber-starter' ),
 			]
 		);
